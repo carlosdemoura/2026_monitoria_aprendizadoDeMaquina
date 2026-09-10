@@ -61,15 +61,16 @@ for (i in 1:9) {
   
   metricas[[i]] =
     metrics(predict, truth = y, estimate = .pred) |>
+    select(-.estimator) |>
     bind_cols(grau = i)
 }
 
-metricas = do.call(rbind, metricas)  # ou
-# metricas = bind_rows(metricas)
+# metricas = do.call(rbind, metricas)  # ou
+metricas = bind_rows(metricas)
 
 metricas |>
-  # filter(.metric == "mae") |>
-  filter(.metric == "rmse") |>
+  filter(.metric == "mae") |>
+  # filter(.metric == "rmse") |>
   arrange(.estimate)
 
 grid =
@@ -81,12 +82,12 @@ grid =
 
 ggplot(grid, aes(x, predito, color = factor(grau))) +
   geom_line(linewidth = 1) +
-  geom_point(
-    data = dados,
-    aes(x, y),
-    inherit.aes = FALSE,
-    color = "black"
-  ) +
+  # geom_point(
+  #   data = dados,
+  #   aes(x, y),
+  #   inherit.aes = FALSE,
+  #   color = "black"
+  # ) +
   labs(
     color = "Grau"
   )

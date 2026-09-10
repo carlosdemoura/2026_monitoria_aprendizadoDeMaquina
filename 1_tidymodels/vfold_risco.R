@@ -1,5 +1,11 @@
 library(tidymodels)
 
+set.seed(12345)
+dados = tibble(
+  x = runif(1000,0,10),
+  y = 2 + 0.5 * x - 0.05 * x^2 + rnorm(length(x))
+)
+
 folds = vfold_cv(
   dados,
   v = 3

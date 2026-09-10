@@ -34,6 +34,9 @@ hist(dados20$x)
 hist(dados20_teste$x)
 hist(dados20_treino$x)
 
+par(mfrow=c(1,1))
+boxplot(dados20$x, dados20_teste$x, dados20_treino$x)
+
 summary(dados20$x)
 summary(dados20_teste$x)
 summary(dados20_treino$x)

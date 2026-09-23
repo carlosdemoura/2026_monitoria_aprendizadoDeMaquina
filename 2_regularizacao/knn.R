@@ -3,8 +3,15 @@ library(tidymodels)
 
 data(Boston, package = "MASS")
 
+set.seed(12345)
+split = initial_split(Boston, prop = 0.8, strata = medv)
+dados_treino = training(split)
+dados_teste  = testing(split)
+
+
+
 rec =
-  recipe(medv ~ ., data = Boston) |>
+  recipe(medv ~ ., data = dados_treino) |>
   step_normalize(all_predictors())
 
 mod =
@@ -23,5 +30,8 @@ wf =
 
 fit =
   wf |>
-  fit(data = Boston)
+  fit(data = dados_treino)
 
+
+predict(fit, dados_teste) |>
+  bind_cols(real = dados_teste$medv) 

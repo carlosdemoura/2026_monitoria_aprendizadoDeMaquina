@@ -6,8 +6,9 @@ data(Boston, package = "MASS")
 folds = vfold_cv(Boston, v = 10)
 
 grid =
-  tibble(
-    neighbors = seq(1, 10, by = 2)
+  expand.grid(
+    neighbors = seq(1, 10, by = 2),
+    dist_power = 1:3
   )
 
 rec =
@@ -18,7 +19,7 @@ mod =
   nearest_neighbor(
     neighbors = tune(),
     weight_func = "rectangular",
-    dist_power = 2
+    dist_power = tune()
   ) |>
   set_engine("kknn") |>
   set_mode("regression")

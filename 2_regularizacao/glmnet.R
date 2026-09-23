@@ -1,9 +1,12 @@
 library(tidymodels)
 library(tidyverse)
+# pak::pak("glmnet")
 
 dados = tibble(
   x1 = rnorm(100),
   x2 = rnorm(100),
+  x3 = rnorm(100),
+  x4 = rnorm(100),
   y = 1+x1+2*x2+rnorm(100),
 )
 
@@ -25,6 +28,7 @@ fit =
   fit(data = dados)
 
 fit_path = extract_fit_engine(fit)
+
 fit_path = rbind(
   fit_path$lambda,
   coef(fit_path)

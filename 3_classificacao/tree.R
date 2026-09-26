@@ -39,4 +39,6 @@ out = tune_grid(
   metrics = metricas
 )
 
-show_best(out, metric = "roc_auc")
+show_best(out, metric = "accuracy")
+
+collect_metrics(out)

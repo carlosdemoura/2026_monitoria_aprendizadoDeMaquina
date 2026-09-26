@@ -1,3 +1,5 @@
+library(tidymodels)
+
 mod =
   logistic_reg() |>
   set_engine("glm") |>
@@ -19,4 +21,6 @@ resultado =
   predict(fit, teste, type = "class") |>
   bind_cols(teste["sucesso"])
 
-conf_mat(resultado, truth = sucesso, estimate = .pred_class)
+m = conf_mat(resultado, truth = sucesso, estimate = .pred_class)
+m = m$table
+100 * m / colSums(m)

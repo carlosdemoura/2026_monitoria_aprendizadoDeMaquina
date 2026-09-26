@@ -1,3 +1,4 @@
+library(tidyverse)
 library(tidymodels)
 
 set.seed(12345)
@@ -14,6 +15,15 @@ dados = tibble(
     prob = c(.4, .45, .15)
   )
 )
+
+# eta =
+#   -4 +
+#   0 * dados$idade +
+#   0 * dados$renda +
+#   0 * dados$horas_estudo +
+#   0.10 * dados$experiencia +
+#   ifelse(dados$escolaridade == "superior", 0.8, 0) +
+#   ifelse(dados$escolaridade == "pos", 1.5, 0)
 
 eta =
   -4 +

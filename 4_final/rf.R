@@ -52,8 +52,7 @@ grid =
     x2 = seq(min(treino$x2), max(treino$x2), length.out = 200)
   )
 
-grid$classe =
-  predict(fit, new_data = grid)$.pred_class
+grid$classe = predict(fit, new_data = grid)$.pred_class
 
 ggplot() +
   geom_tile(

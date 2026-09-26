@@ -16,7 +16,6 @@ f = function(xx) {
   lapply(xx, g) |> unlist()
 }
 
-
 df =
   tibble(
     x = runif(n, -2, 4),
@@ -73,7 +72,7 @@ out =
     wf,
     resamples = folds,
     grid = grid,
-    metrics = metric_set(rmse, rsq)
+    metrics = metric_set(rmse)
   )
 
 show_best(out, metric = "rmse")

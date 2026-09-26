@@ -37,3 +37,17 @@ teste  = testing(split)
 
 set.seed(12345)
 folds = vfold_cv(treino, v = 10, strata = classe)
+
+
+# treino =
+#   treino |>
+#   bind_rows(
+#     tibble(x1 = -2, x2 = 2, classe = factor("A"))
+#   )
+# df =
+#   df |>
+#   bind_rows(
+#     tibble(x1 = -2, x2 = 2, classe = factor("A"))
+#   )
+# 
+# with(treino, plot(x1, x2, col = classe, pch = 19))

@@ -1,5 +1,7 @@
 library(tidymodels)
 
+# pak::pak("kernlab")
+
 mod =
   svm_rbf(
     cost = tune(),
